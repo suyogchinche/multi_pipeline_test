@@ -42,14 +42,14 @@ def call() {
         versionPrefix : 'v'
         ])
     
-    def TAG_NAME = gitTagName();
+    def TAG_NAME = gitTagName()
     
     if ( ${GIT_BRANCH} == 'master' || ${GIT_BRANCH} == 'hostfix' || ${GIT_BRANCH} == 'develop' ) {
-         return ${VERSION_NUMBER} ;
+         return '${VERSION_NUMBER}'
     }else if ( ${GIT_BRANCH} == 'release' || ( ${GIT_BRANCH} ==~ 'Feature-*' &&  ${TAG_NAME} ==~ 'release-*' ) )
          return '${VERSION_NUMBER}-SNAPSHOT'
     }else {
-         retrun 'Not-Applicable'
+         return 'Not-Applicable'
     }
 
 }
