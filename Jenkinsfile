@@ -32,7 +32,7 @@ pipeline{
             }
            steps {
               script {
-                  mydata = gitshow_BuildId(VERSION_NUMBER, env.GIT_BRANCH)
+                  mydata = show_BuildId(VERSION_NUMBER, env.GIT_BRANCH)
               }
               echo mydata 
            }
