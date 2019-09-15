@@ -34,18 +34,12 @@ String getCommit() {
 
 
 
-def call() {
+def call(String VERSION_NUMBER, String branch) {
 
-    def VERSION_NUMBER = VersionNumber([
-        versionNumberString :'${BUILD_MONTH}.${BUILDS_TODAY}.${BUILD_NUMBER}',
-        projectStartDate : '2019-02-09',
-        versionPrefix : 'v'
-        ])
-    
-    def TAG_NAME = gitTagName()
-
+    echo 'VERSION_NUMBER is ::' VERSION_NUMBER
+    echo 'VERSION_NUMBER is :: ${VERSION_NUMBER}'
     echo 'TAG NAME is :: ' TAG_NAME
-    echo 'Branch name :: ' env.BRANCH_NAME
+    echo 'Branch name :: ${branch}'
     
     if ( ${GIT_BRANCH} == 'master' || ${GIT_BRANCH} == 'hostfix' || ${GIT_BRANCH} == 'develop' ) {
          return '${VERSION_NUMBER}'
