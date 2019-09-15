@@ -1,0 +1,21 @@
+<h1>gitNextSemverTag</h1>
+<ul>
+    <li>Retrieves tags from git based on the given currentVersion parameter</li>
+    <li>Will then based on these tags determine the next SemVer version</li>
+</ul>
+<br>
+<h2>Arguments</h2>
+<ul>
+    <li><strong>currentVersion</strong>: the current version in SemVer, but ONLY the first two segments (Major.Minor)</li>
+</ul>
+<br>
+<h2>Requirements</h2>
+<ul>
+    <li>Git's advanced clone behavior is added to checkout and <em>fetch tags</em> is checked</li>
+</ul>
+<h2>Example</h2>
+<pre>
+<code>
+def nextVersion = gitNextSemverTag('0.1')
+</code>
+</pre>
