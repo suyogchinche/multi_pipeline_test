@@ -1,24 +1,26 @@
-pipeline {
-  agent any
-  stages {
-    stage('Deliver for development') {
-            when {
-                branch 'master'
-            }
-            steps {
- 		sh 'echo Building master ${BRANCH_NAME}...'
-            }
-        }
-        stage('Deploy for production') {
-            when {
-                branch 'feature-*'
-            }
-            steps {
-		sh 'echo Building ${BRANCH_NAME}...'
-		sh 'printenv'
-		
-            }
-        }
-   }
-}
+pipeline{
+    agent {
+        label 'master'
+    }
+    
+    libraries {
+       lib('my-shared-library@master')
+    }
 
+    environment {
+       //application metadata related variables
+       APP_NAME = "shared_lib"
+       APP_AUTHOR = "Suyog Chinche"
+
+    } 
+    stages{
+        stage('Preparation'){
+            
+            steps{
+                hello 'Sachin'
+                show_BuildId()
+            }
+        }
+        
+    }
+}
