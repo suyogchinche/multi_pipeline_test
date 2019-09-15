@@ -2,6 +2,16 @@ pipeline{
     agent {
         label 'master'
     }
+    
+    environment {
+
+    VERSION_NUMBER = VersionNumber([
+        versionNumberString :'${BUILD_MONTH}.${BUILDS_TODAY}.${BUILD_NUMBER}',
+        projectStartDate : '2019-02-09',
+        versionPrefix : 'v'
+        ])
+
+    }
 
     libraries {
        lib('my-shared-library@master')
@@ -10,6 +20,7 @@ pipeline{
     stages {
        stage('Checkout') {
           steps {
+              sh 'printenv'
               script {
                   scmVars = checkout scm // won't cost much as the data is already here, simply gives us some more information
               }
@@ -20,12 +31,7 @@ pipeline{
                NEW_VERSION = '0.1.1'
             }
            steps {
-               gitRemoteConfigByUrl(scmVars.GIT_URL, 'githubtoken')
-               sh '''git config --global user.email "jenkins@jenkins.io"
-               git config --global user.name "Jenkins"
-               '''
-               // Directly passing in the var will give you an error
-               gitTag("v${NEW_VERSION}")
+               echo gitshow_BuildId(VERSION_NUMBER, env.GIT_BRANCH_NAME)
            }
        }
     }
