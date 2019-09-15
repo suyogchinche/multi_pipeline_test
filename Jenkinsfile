@@ -31,10 +31,8 @@ pipeline{
                NEW_VERSION = '0.1.1'
             }
            steps {
-              script {
-                  mydata = show_BuildId(VERSION_NUMBER, env.GIT_BRANCH)
-              }
-              echo mydata 
+                  mydata = show_BuildId(VERSION_NUMBER, GIT_BRANCH)
+                  echo mydata 
            }
        }
     }
