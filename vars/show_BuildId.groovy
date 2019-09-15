@@ -37,6 +37,12 @@ String getCommit() {
 def call() {
     
     env.TAG_NAME = gitTagName()    
+   
+    echo "TAG NAME is ${TAG_NAME}"
+
+    def TAG_NAME = gitTagName()
+ 
+    echo "TAG NAME 2 is ${TAG_NAME}"
     
     sh 'printenv'
 
