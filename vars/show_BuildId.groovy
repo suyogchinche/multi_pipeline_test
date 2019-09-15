@@ -34,21 +34,16 @@ String getCommit() {
 
 
 
-def call(String VERSION_NUMBER, String branch) {
-
-    sh 'printenv'
-    echo "VERSION_NUMBER is :: ${VERSION_NUMBER}"
-    echo "Branch name :: ${branch}"
-    echo "Branch name from env variable ${GIT_BRANCH}"
-    def TAG_NAME = gitTagName()
-    echo "TAG name is $TAG_NAME"
+def call() {
     
-    if ( ${GIT_BRANCH} == 'master' || ${GIT_BRANCH} == 'hostfix' || ${GIT_BRANCH} == 'develop' ) {
+   def TAG_NAME = gitTagName()    
+
+    if ( GIT_BRANCH == 'master' || GIT_BRANCH == 'hostfix' || GIT_BRANCH == 'develop' ) {
          return "${VERSION_NUMBER}"
-    } else if ( "${GIT_BRANCH}" == 'release' || ( "${GIT_BRANCH}" ==~ 'Feature-*' &&  "${TAG_NAME}" ==~ 'release-*' ) ) {
+    } else if ( GIT_BRANCH == 'release' || ( GIT_BRANCH ==~ 'Feature-*' &&  TAG_NAME ==~ 'release-*' ) ) {
          return "${VERSION_NUMBER}-SNAPSHOT"
     } else {
-         return 'Not-Applicable'
+         return null
     }
 
 }

@@ -28,7 +28,7 @@ pipeline{
        }
        stage('Tag repo') {
            steps {
-               echo show_BuildId(VERSION_NUMBER, GIT_BRANCH)
+               echo show_BuildId()
            }
        }
     }
