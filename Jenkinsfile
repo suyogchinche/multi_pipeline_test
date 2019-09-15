@@ -18,14 +18,6 @@ pipeline{
     }
 
     stages {
-       stage('Checkout') {
-          steps {
-              sh 'printenv'
-              script {
-                  scmVars = checkout scm // won't cost much as the data is already here, simply gives us some more information
-              }
-          }
-       }
        stage('Tag repo') {
            steps {
                script {
