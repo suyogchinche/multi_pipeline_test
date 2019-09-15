@@ -44,8 +44,8 @@ def call() {
     
     def TAG_NAME = gitTagName()
 
-    echo 'TAG NAME is :: ${TAG_NAME}'
-    echo 'Branch name ::${GIT_BRANCH}'
+    echo 'TAG NAME is :: ' TAG_NAME
+    echo 'Branch name :: ' BRANCH_NAME
     
     if ( ${GIT_BRANCH} == 'master' || ${GIT_BRANCH} == 'hostfix' || ${GIT_BRANCH} == 'develop' ) {
          return '${VERSION_NUMBER}'
