@@ -28,7 +28,12 @@ pipeline{
        }
        stage('Tag repo') {
            steps {
-               echo show_BuildId()
+               script {
+                 env.BUILD_ID = show_BuildId()
+               }
+               echo 'Suyog:::::::::::::::::::'
+               sh 'printenv'
+               
            }
        }
     }
