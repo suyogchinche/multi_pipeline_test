@@ -43,7 +43,7 @@ def call() {
     if ( BRANCH_NAME == 'master' || BRANCH_NAME == 'hostfix' || BRANCH_NAME == 'develop' ) {
          echo "master-hotfix-develop"
          return "${VERSION_NUMBER}"
-    } else if ( BRANCH_NAME == 'release' || ( BRANCH_NAME ==~ 'feature-*' &&  TAG_NAME ==~ 'release-*' ) ) {
+    } else if ( BRANCH_NAME == 'release' || ( BRANCH_NAME ==~ 'feature' &&  TAG_NAME ==~ 'release' ) ) {
          echo "release-feature-*"
          return "${VERSION_NUMBER}-SNAPSHOT"
     } else {
