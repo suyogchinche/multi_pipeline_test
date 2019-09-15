@@ -28,6 +28,7 @@ boolean isTag(String desc) {
     match = null // prevent serialisation
     return result
 }
+
 String getCommit() {
     return sh(script: 'git rev-parse HEAD', returnStdout: true)?.trim()
 }
@@ -38,18 +39,10 @@ def call() {
     
     env.TAG_NAME = gitTagName()    
    
-    echo "TAG NAME is ${TAG_NAME}"
-
-    def TAG_NAME = gitTagName()
- 
-    echo "TAG NAME 2 is ${TAG_NAME}"
-    
-    sh 'printenv'
-
-    if ( GIT_BRANCH == 'master' || GIT_BRANCH == 'hostfix' || GIT_BRANCH == 'develop' ) {
+    if ( BRANCH_NAME == 'master' || BRANCH_NAME == 'hostfix' || BRANCH_NAME == 'develop' ) {
          echo "master-hotfix-develop"
          return "${VERSION_NUMBER}"
-    } else if ( GIT_BRANCH == 'release' || ( GIT_BRANCH ==~ 'feature-*' &&  TAG_NAME ==~ 'release-*' ) ) {
+    } else if ( BRANCH_NAME == 'release' || ( BRANCH_NAME ==~ 'feature-*' &&  BRANCH_NAME ==~ 'release-*' ) ) {
          echo "release-feature-*"
          return "${VERSION_NUMBER}-SNAPSHOT"
     } else {
