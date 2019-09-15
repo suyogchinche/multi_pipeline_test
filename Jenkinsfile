@@ -27,12 +27,8 @@ pipeline{
           }
        }
        stage('Tag repo') {
-           environment {
-               NEW_VERSION = '0.1.1'
-            }
            steps {
-                  mydata = show_BuildId(VERSION_NUMBER, GIT_BRANCH)
-                  echo mydata 
+               echo show_BuildId(VERSION_NUMBER, GIT_BRANCH)
            }
        }
     }
