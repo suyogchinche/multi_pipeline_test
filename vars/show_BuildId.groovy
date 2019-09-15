@@ -37,13 +37,14 @@ String getCommit() {
 def call(String VERSION_NUMBER, String branch) {
 
     //echo 'VERSION_NUMBER is ::' VERSION_NUMBER
-    echo 'VERSION_NUMBER is :: ${VERSION_NUMBER}'
-    echo 'Branch name :: ${branch}'
+    echo "VERSION_NUMBER is :: ${VERSION_NUMBER}"
+    echo "Branch name :: ${branch}"
+    def TAG_NAME = gitTagName()
     
     if ( ${GIT_BRANCH} == 'master' || ${GIT_BRANCH} == 'hostfix' || ${GIT_BRANCH} == 'develop' ) {
-         return '${VERSION_NUMBER}'
-    } else if ( ${GIT_BRANCH} == 'release' || ( ${GIT_BRANCH} ==~ 'Feature-*' &&  ${TAG_NAME} ==~ 'release-*' ) ) {
-         return '${VERSION_NUMBER}-SNAPSHOT'
+         return "${VERSION_NUMBER}"
+    } else if ( "${GIT_BRANCH}" == 'release' || ( "${GIT_BRANCH}" ==~ 'Feature-*' &&  "${TAG_NAME}" ==~ 'release-*' ) ) {
+         return "${VERSION_NUMBER}-SNAPSHOT"
     } else {
          return 'Not-Applicable'
     }
