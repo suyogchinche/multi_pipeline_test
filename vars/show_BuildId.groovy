@@ -46,9 +46,9 @@ def call() {
     
     if ( ${GIT_BRANCH} == 'master' || ${GIT_BRANCH} == 'hostfix' || ${GIT_BRANCH} == 'develop' ) {
          return '${VERSION_NUMBER}'
-    }else if ( ${GIT_BRANCH} == 'release' || ( ${GIT_BRANCH} ==~ 'Feature-*' &&  ${TAG_NAME} ==~ 'release-*' ) )
+    } else if ( ${GIT_BRANCH} == 'release' || ( ${GIT_BRANCH} ==~ 'Feature-*' &&  ${TAG_NAME} ==~ 'release-*' ) ) {
          return '${VERSION_NUMBER}-SNAPSHOT'
-    }else {
+    } else {
          return 'Not-Applicable'
     }
 
