@@ -39,10 +39,13 @@ def call() {
    def TAG_NAME = gitTagName()    
 
     if ( GIT_BRANCH == 'master' || GIT_BRANCH == 'hostfix' || GIT_BRANCH == 'develop' ) {
+         echo "master-hotfix-develop"
          return "${VERSION_NUMBER}"
     } else if ( GIT_BRANCH == 'release' || ( GIT_BRANCH ==~ 'Feature-*' &&  TAG_NAME ==~ 'release-*' ) ) {
+         echo "release-feature-*"
          return "${VERSION_NUMBER}-SNAPSHOT"
     } else {
+         echo "null"
          return null
     }
 
