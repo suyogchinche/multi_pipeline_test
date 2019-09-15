@@ -39,6 +39,7 @@ def call(String VERSION_NUMBER, String branch) {
     sh 'printenv'
     echo "VERSION_NUMBER is :: ${VERSION_NUMBER}"
     echo "Branch name :: ${branch}"
+    echo "Branch name from env variable ${GIT_BRANCH}"
     def TAG_NAME = gitTagName()
     echo "TAG name is $TAG_NAME"
     
