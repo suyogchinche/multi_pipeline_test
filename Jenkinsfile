@@ -27,6 +27,7 @@ pipeline{
                // Directly passing in the var will give you an error
                gitTag("v${NEW_VERSION}")
            }
-      }
+       }
+    }
 }
 
