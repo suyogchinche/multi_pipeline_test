@@ -14,14 +14,14 @@ pipeline{
     }
 
     libraries {
-       lib('my-shared-library@master')
+       lib('git_infoshared_lib@master')
     }
 
     stages {
        stage('Tag repo') {
            steps {
                script {
-                 env.BUILD_ID = show_BuildId()
+                 env.BUILD_ID = GitInfo.getBuildVersion()
                }
                echo 'Suyog:::::::::::::::::::'
                sh 'printenv'
