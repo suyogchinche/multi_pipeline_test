@@ -8,7 +8,7 @@ def call() {
         echo "master-hotfix-release"
         env.REVISION_ID = tag_id;
         return "${TAG_NAME}"
-    } else if ( BRANCH_NAME == 'develop' || ( BRANCH_NAME =~ /feature/ &&  TAG_NAME =~ /release/ ) ) {
+    } else if ( BRANCH_NAME == 'develop' || BRANCH_NAME =~ /feature/ ) {
         echo "development-feature-*"
         env.REVISION_ID = ${TAG_NAME}-SNAPSHOT
         return "${TAG_NAME}-SNAPSHOT"
