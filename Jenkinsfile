@@ -21,7 +21,7 @@ pipeline{
        stage('Tag repo') {
            steps {
                script {
-                 env.BUILD_ID = com.cloudcomp.ccoms.GitInfo.getBuildVersion()
+                 env.BUILD_ID = getBuildVersion()
                }
                echo 'Suyog:::::::::::::::::::'
                sh 'printenv'
