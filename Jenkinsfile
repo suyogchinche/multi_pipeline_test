@@ -14,14 +14,14 @@ pipeline{
     }
 
     libraries {
-       lib('git_infoshared_lib@master') import com.cloudcomp.ccoms.GitInfo
+       lib('git_infoshared_lib@master')
     }
 
     stages {
        stage('Tag repo') {
            steps {
                script {
-                 env.BUILD_ID = GitInfo.getBuildVersion()
+                 env.BUILD_ID = com.cloudcomp.ccoms.GitInfo.getBuildVersion()
                }
                echo 'Suyog:::::::::::::::::::'
                sh 'printenv'
