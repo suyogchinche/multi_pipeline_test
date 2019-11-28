@@ -14,7 +14,7 @@ pipeline{
     }
 
     libraries {
-       lib('git_infoshared_lib@master') import com.cloudcomp.ccoms
+       lib('git_infoshared_lib@master') import com.cloudcomp.ccoms.GitInfo
     }
 
     stages {
