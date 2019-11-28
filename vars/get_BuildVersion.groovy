@@ -1,4 +1,4 @@
-String getBuildVersion() {
+def call() {
 
    tag_id = sh(script: "git describe --abbrev=0", returnStdout: true)?.trim()
 
