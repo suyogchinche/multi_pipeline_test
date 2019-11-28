@@ -10,6 +10,7 @@ def call() {
         return "${TAG_NAME}"
     } else if ( BRANCH_NAME == 'develop' || BRANCH_NAME =~ /feature/ ) {
         echo "development-feature-*"
+        echo " tag name is :: ${TAG_NAME}-SNAPSHOT"
         env.REVISION_ID = ${TAG_NAME}-SNAPSHOT
         return "${TAG_NAME}-SNAPSHOT"
     } else {
