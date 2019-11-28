@@ -2,7 +2,7 @@ package com.cloudcomp.ccoms
 
 class GitInfo {
 
-  String giGitTag() {
+  String getBuildVersion() {
      
      tag_id = sh(script: "git describe --abbrev=0", returnStdout: true)?.trim()
 
